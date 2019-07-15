@@ -1,0 +1,19 @@
+platform:
+  - x64
+  
+environment:
+  matrix:
+    - strawberry_version: 5.30.0.1
+    - strawberry_version: 5.28.2.1
+    - strawberry_version: 5.28.1.1
+    - strawberry_version: 5.28.0.1
+    - strawberry_version: 5.26.3.1
+install:
+  - choco install --allowemptychecksum strawberryperl --version %strawberry_version%
+  - path C:\strawberry\perl\site\bin;C:\strawberry\perl\bin;C:\strawberry\c\bin;%PATH%
+  - perl -V
+  - cpanm --version
+  - gcc --version
+  
+build_script:
+  - cpanm -n -v PDL
